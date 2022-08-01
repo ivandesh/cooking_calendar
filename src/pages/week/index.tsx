@@ -90,6 +90,12 @@ const Week = () => {
             </IconButton>
             <IconButton
               size="small"
+              onClick={() => dispatch(randomize({type: 'random'}))}
+            >
+              <CasinoIcon />
+            </IconButton>
+            <IconButton
+              size="small"
               onClick={() => setIsTotalOpen(true)}
             >
               <ShoppingCartIcon />
@@ -99,12 +105,6 @@ const Week = () => {
               onClick={() => setResetDialogOpen(true)}
             >
               <LocalDiningIcon />
-            </IconButton>
-            <IconButton
-              size="small"
-              onClick={() => dispatch(randomize({type: 'random'}))}
-            >
-              <CasinoIcon />
             </IconButton>
           </ButtonsWrapper>
         </Ingredients>
