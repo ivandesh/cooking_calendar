@@ -1,5 +1,5 @@
 import Drawer from '@mui/material/Drawer';
-import { Ingredient, TotalWrapper } from '../index.styles';
+import { TotalWrapper } from '../index.styles';
 import { useAppSelector } from 'redux/hooks';
 
 function unique(arr: any, keyProps: string[]) {
@@ -45,7 +45,6 @@ const TotalIngredients = ({isTotalOpen, setIsTotalOpen}: {isTotalOpen: boolean; 
       return item;
     }
   })
-  console.log(ingredientsList.filter((ing: any) => ing.checked))
 
   let uniqueIngredients = unique(addedQuantity, ['name', 'unit'])
 

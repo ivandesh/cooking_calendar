@@ -32,7 +32,7 @@ const cookingSlice = createSlice({
       state[action.payload.dayIndex].meals[action.payload.mealIndex] = action.payload.meal
     },
     toggleIngredient: (state, action: PayloadAction<{dayIndex: number, mealIndex: number, ingredientName: string, checked: boolean}>) => {
-      //@ts-ignore
+      // @ts-ignore
       state[action.payload.dayIndex].meals[action.payload.mealIndex].ingredients.find(ing => ing.name === action.payload.ingredientName).checked = action.payload.checked
     },
     reset: () => {
