@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.d7b5602b.css",
-    "main.js": "/static/js/main.0905e583.js",
-    "static/js/787.64c2245c.chunk.js": "/static/js/787.64c2245c.chunk.js",
-    "static/media/AlbaSuper.ttf": "/static/media/AlbaSuper.fcad9613e2048940863b.ttf",
-    "index.html": "/index.html",
-    "main.d7b5602b.css.map": "/static/css/main.d7b5602b.css.map",
-    "main.0905e583.js.map": "/static/js/main.0905e583.js.map",
-    "787.64c2245c.chunk.js.map": "/static/js/787.64c2245c.chunk.js.map"
+    "main.css": "/cooking_calendar/static/css/main.2ffe79bf.css",
+    "main.js": "/cooking_calendar/static/js/main.850ccb46.js",
+    "static/js/787.64c2245c.chunk.js": "/cooking_calendar/static/js/787.64c2245c.chunk.js",
+    "static/media/AlbaSuper.ttf": "/cooking_calendar/static/media/AlbaSuper.fcad9613e2048940863b.ttf",
+    "index.html": "/cooking_calendar/index.html",
+    "main.2ffe79bf.css.map": "/cooking_calendar/static/css/main.2ffe79bf.css.map",
+    "main.850ccb46.js.map": "/cooking_calendar/static/js/main.850ccb46.js.map",
+    "787.64c2245c.chunk.js.map": "/cooking_calendar/static/js/787.64c2245c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d7b5602b.css",
-    "static/js/main.0905e583.js"
+    "static/css/main.2ffe79bf.css",
+    "static/js/main.850ccb46.js"
   ]
 }
