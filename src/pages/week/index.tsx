@@ -11,7 +11,7 @@ import {
 import { useAppSelector, useAppDispatch } from 'redux/hooks'
 import Cell from './components/cell'
 import { Checkbox } from '@mui/material'
-import { toggleIngredient, reset } from 'features/recipe/cookingSlice'
+import { toggleIngredient, reset, randomize } from 'features/recipe/cookingSlice'
 import TotalIngredients from './components/total'
 import IconButton from '@mui/material/IconButton'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
@@ -23,6 +23,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode'
 import CircleIcon from '@mui/icons-material/Circle'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import LocalDiningIcon from '@mui/icons-material/LocalDining'
+import CasinoIcon from '@mui/icons-material/Casino'
 
 const Week = () => {
   const weekState = useAppSelector((state) => state.app)
@@ -36,17 +37,25 @@ const Week = () => {
       <WeekWrapper className={`${showCalendar ? 'show' : 'hide'}`}>
         <DayWrapper>
           <h4 className="title margin-10"> </h4>
-          <div className="cell bordered">
-            <WbTwilightIcon />
+          <div className="cell">
+            <div className='cell-inner bordered'>
+              <WbTwilightIcon />
+            </div>
           </div>
-          <div className="cell space-3 bordered">
-            <LightModeIcon />
+          <div className="cell">
+            <div className='cell-inner space-3 bordered'>
+              <LightModeIcon />
+            </div>
           </div>
-          <div className="cell space-3 bordered">
-            <DarkModeIcon />
+          <div className="cell">
+            <div className='cell-inner space-3 bordered'>
+              <DarkModeIcon />
+            </div>
           </div>
-          <div className="cell bordered">
-            <CircleIcon />
+          <div className="cell">
+            <div className='cell-inner bordered'>
+              <CircleIcon />
+            </div>
           </div>
         </DayWrapper>
         {weekState.map((item, index) => {
@@ -75,24 +84,27 @@ const Week = () => {
           <ButtonsWrapper>
             <IconButton
               size="small"
-              color="info"
               onClick={() => setShowCalendar((prev) => !prev)}
             >
               {showCalendar ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </IconButton>
             <IconButton
               size="small"
-              color="info"
               onClick={() => setIsTotalOpen(true)}
             >
               <ShoppingCartIcon />
             </IconButton>
             <IconButton
               size="small"
-              color="error"
               onClick={() => setResetDialogOpen(true)}
             >
               <LocalDiningIcon />
+            </IconButton>
+            <IconButton
+              size="small"
+              onClick={() => dispatch(randomize({type: 'random'}))}
+            >
+              <CasinoIcon />
             </IconButton>
           </ButtonsWrapper>
         </Ingredients>
@@ -143,7 +155,7 @@ const Week = () => {
         handleClose={() => setResetDialogOpen(false)}
         handleSuccess={() => {
           setResetDialogOpen(false)
-          dispatch(reset())
+          dispatch(reset({type: 'reset'}))
         }}
       />
     </Wrapper>

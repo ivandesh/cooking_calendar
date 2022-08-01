@@ -53,7 +53,9 @@ const Cell = ({meal, mealIndex, dayIndex}: {meal: {title?: string}, mealIndex: n
     )
   }
   return ( 
-    <div className='cell' style={{backgroundColor: colors[indexToColor[dayIndex%2][mealIndex]]}} onClick={() => setMode('edit')}>{meal ? meal.title : '-'}</div>
+    <div className='cell' style={{backgroundColor: colors[indexToColor[dayIndex%2][mealIndex]]}}>
+      <div className='cell-inner' onClick={() => setMode('edit')}>{meal ? meal.title : '-'}</div>
+    </div>
   )
 }
 

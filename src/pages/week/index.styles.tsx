@@ -43,28 +43,34 @@ export const DayWrapper = styled.div<{ last?: boolean }>`
   }
 
   .cell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    height: 35px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    border-right: ${({ last }) =>
-      !last ? '1px solid rgba(0,0,0,0.5)' : 'none'};
+    
+    .cell-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      height: 35px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      border-right: ${({ last }) =>
+        !last ? '1px solid rgba(0,0,0,0.5)' : 'none'};
+      z-index: 10;
 
-    > .MuiSvgIcon-root {
+      > .MuiSvgIcon-root {
       font-size: 42px;
       color: #fce38a;
-    }
+      }
 
-    &.space-3 {
-      height: 149px;
-    }
-    &.bordered {
-      border-right: 1px solid rgba(0, 0, 0, 0.5);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-      cursor: default;
+      &.space-3 {
+        height: 149px;
+      }
+
+      &.bordered {
+        border-right: 1px solid rgba(0, 0, 0, 0.5);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+        cursor: default;
+      }
     }
   }
 `
@@ -101,9 +107,9 @@ export const Ingredient = styled.div`
   .MuiCheckbox-root {
     padding: 0;
   }
-  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
-  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
-    color: #58998e;
+  .Mui-checked,
+  .MuiCheckbox-indeterminate {
+    color: #58998e !important;
   }
 
   .name {
@@ -160,13 +166,14 @@ export const TotalWrapper = styled.div`
 
   .ingredient {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     gap: 5px;
 
     .name {
       flex-grow: 1;
     }
+
     .quantity {
       flex-shrink: 0;
     }
