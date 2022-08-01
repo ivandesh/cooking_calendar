@@ -1,13 +1,13 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #F38181;
+  background-color: #f38181;
   padding: 100px 90px 0;
   box-sizing: border-box;
   min-height: 100vh;
-`;
+`
 
 export const WeekWrapper = styled.div`
   display: grid;
@@ -18,11 +18,11 @@ export const WeekWrapper = styled.div`
     margin-top: -607px;
     transition: margin-top 0.5s ease;
   }
-`;
+`
 
-export const DayWrapper = styled.div<{last?: boolean}>`
+export const DayWrapper = styled.div<{ last?: boolean }>`
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   .title {
     display: flex;
     align-items: center;
@@ -31,7 +31,7 @@ export const DayWrapper = styled.div<{last?: boolean}>`
     text-transform: uppercase;
     margin: 0;
     height: 50px;
-    border-bottom: 1px solid rgba(0,0,0,0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     font-family: 'Alba Super';
     font-size: 55px;
     color: #e5ffcf;
@@ -42,7 +42,6 @@ export const DayWrapper = styled.div<{last?: boolean}>`
     }
   }
 
-
   .cell {
     display: flex;
     align-items: center;
@@ -51,33 +50,34 @@ export const DayWrapper = styled.div<{last?: boolean}>`
     height: 35px;
     border: 1px solid transparent;
     cursor: pointer;
-    border-right: ${({last}) => !last ? '1px solid rgba(0,0,0,0.5)' : 'none'};
+    border-right: ${({ last }) =>
+      !last ? '1px solid rgba(0,0,0,0.5)' : 'none'};
 
     > .MuiSvgIcon-root {
       font-size: 42px;
-      color: #FCE38A;
+      color: #fce38a;
     }
 
     &.space-3 {
       height: 149px;
     }
     &.bordered {
-      border-right: 1px solid rgba(0,0,0,0.5);
-      border-bottom: 1px solid rgba(0,0,0,0.5);
+      border-right: 1px solid rgba(0, 0, 0, 0.5);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.5);
       cursor: default;
     }
   }
-`;
+`
 
 export const IngredientsWrapper = styled.div`
   display: grid;
   grid-template-columns: 100px repeat(7, 1fr);
   padding-bottom: 35px;
-  background-color: #EAFFD0;
+  background-color: #eaffd0;
   flex-grow: 1;
   margin-top: 30px;
   border-radius: 15px 15px 0 0;
-`;
+`
 
 export const Ingredients = styled.div`
   display: flex;
@@ -88,7 +88,7 @@ export const Ingredients = styled.div`
     font-size: 20px;
     color: #58998e;
   }
-`;
+`
 
 export const Ingredient = styled.div`
   display: flex;
@@ -101,7 +101,8 @@ export const Ingredient = styled.div`
   .MuiCheckbox-root {
     padding: 0;
   }
-  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
+  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
     color: #58998e;
   }
 
@@ -111,7 +112,7 @@ export const Ingredient = styled.div`
   .quantity {
     flex-shrink: 0;
   }
-`;
+`
 
 export const ButtonsWrapper = styled.div`
   position: sticky;
@@ -126,7 +127,7 @@ export const ButtonsWrapper = styled.div`
     color: #58998e;
     font-size: 40px;
   }
-`;
+`
 
 export const TotalWrapper = styled.div`
   width: 535px;
@@ -134,13 +135,14 @@ export const TotalWrapper = styled.div`
   background-color: #ffb4b2;
   min-height: 100vh;
   box-sizing: border-box;
+  overflow: auto;
 
   .title {
     text-align: center;
     font-family: 'Alba Super';
     font-size: 68px;
     margin: 45px 0 42px;
-    color: #EAFFD0;
+    color: #eaffd0;
   }
 
   .list {
@@ -148,7 +150,7 @@ export const TotalWrapper = styled.div`
     flex-direction: column;
     gap: 5px;
     padding: 29px 27px;
-    background-color: #EAFFD0;
+    background-color: #eaffd0;
     margin: 0 28px;
     border-radius: 7px;
     color: #3d6d65;
@@ -161,7 +163,7 @@ export const TotalWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     gap: 5px;
-    
+
     .name {
       flex-grow: 1;
     }
@@ -169,15 +171,15 @@ export const TotalWrapper = styled.div`
       flex-shrink: 0;
     }
   }
-`;
+`
 
 export const DialogWrapper = styled.div`
   width: 400px;
   padding: 30px;
-  background-color: #95E1D3;
+  background-color: #95e1d3;
   border-radius: 8px;
   position: relative;
-  overflow: auto;
+  overflow: hidden;
 
   h3 {
     position: relative;
@@ -203,7 +205,7 @@ export const DialogWrapper = styled.div`
 
     .cancel {
       width: 100px;
-      background-color: #FCE38A;
+      background-color: #fce38a;
       color: #3a3a3a;
       box-shadow: none;
       font-size: 18px;
@@ -217,4 +219,4 @@ export const DialogWrapper = styled.div`
       font-size: 18px;
     }
   }
-`;
+`
