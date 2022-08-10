@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { breakfastMeals, proteinMeals, garnishList, combinedMealsList, snackMeals, TMeal } from 'constants/meals';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,7 +8,7 @@ import { colors } from 'theme/colors';
 
 const Cell = ({meal, mealIndex, dayIndex}: {meal: {title?: string}, mealIndex: number, dayIndex: number}) => {
   const [mode, setMode] = useState('view');
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(meal ? meal.title : '');
   const [mealList, setMealList] = useState<TMeal[]>([]);
   const dispatch = useAppDispatch();
 
@@ -25,6 +25,11 @@ const Cell = ({meal, mealIndex, dayIndex}: {meal: {title?: string}, mealIndex: n
       setMealList(combinedMealsList)
     }
   }, [mealIndex])
+
+  useEffect(() => {
+    setValue(meal ? meal.title : '')
+  }, [meal])
+  console.log('re-rendered')
 
   const handleChange = (event: SelectChangeEvent) => {
     setValue(event.target.value as string);
@@ -46,7 +51,7 @@ const Cell = ({meal, mealIndex, dayIndex}: {meal: {title?: string}, mealIndex: n
           >
             <MenuItem value={''}>-</MenuItem>
             {mealList.map((item: TMeal) => {
-              return <MenuItem key={item.title} value={item.title }>{item.title}</MenuItem>
+              return <MenuItem key={item.title} value={item.title}>{item.title}</MenuItem>
             })}
           </Select>
       </div>
@@ -54,9 +59,12 @@ const Cell = ({meal, mealIndex, dayIndex}: {meal: {title?: string}, mealIndex: n
   }
   return ( 
     <div className='cell' style={{backgroundColor: colors[indexToColor[dayIndex%2][mealIndex]]}}>
-      <div className='cell-inner' onClick={() => setMode('edit')}>{meal ? meal.title : '-'}</div>
+      <div className='cell-inner' onClick={() => {
+        console.log(value)
+        setMode('edit')}}>{meal ? meal.title : '-'}
+      </div>
     </div>
   )
 }
 
-export default Cell
+export default React.memo(Cell)

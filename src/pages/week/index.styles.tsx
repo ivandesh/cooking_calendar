@@ -43,7 +43,6 @@ export const DayWrapper = styled.div<{ last?: boolean }>`
   }
 
   .cell {
-    
     .cell-inner {
       position: relative;
       display: flex;
@@ -51,6 +50,7 @@ export const DayWrapper = styled.div<{ last?: boolean }>`
       justify-content: center;
       padding: 10px;
       height: 35px;
+      font-size: 15px;
       border: 1px solid transparent;
       cursor: pointer;
       border-right: ${({ last }) =>
