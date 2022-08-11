@@ -1,15 +1,13 @@
-import { useState} from 'react'
+import { useState } from 'react'
 import {
   WeekWrapper,
   DayWrapper,
   IngredientsWrapper,
   Ingredients,
-  Ingredient,
   ButtonsWrapper,
   Wrapper,
 } from './index.styles'
-import { useAppSelector, useAppDispatch } from 'redux/hooks'
-import Cell from './components/cell'
+import { useAppDispatch } from 'redux/hooks'
 import { reset, randomize } from 'features/recipe/cookingSlice'
 import TotalIngredients from './components/total'
 import IconButton from '@mui/material/IconButton'
@@ -23,10 +21,10 @@ import CircleIcon from '@mui/icons-material/Circle'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import LocalDiningIcon from '@mui/icons-material/LocalDining'
 import CasinoIcon from '@mui/icons-material/Casino';
-import Checkbox from './components/checkbox';
+import Calendar from './calendar';
+import IngredientsList from './ingredients';
 
 const Week = () => {
-  const weekState = useAppSelector((state) => state.app)
   const dispatch = useAppDispatch()
   const [isTotalOpen, setIsTotalOpen] = useState(false)
   const [showCalendar, setShowCalendar] = useState(true)
@@ -58,26 +56,9 @@ const Week = () => {
             </div>
           </div>
         </DayWrapper>
-        {weekState.map((item, index) => {
-          return (
-            <DayWrapper
-              key={item.day}
-              last={index === weekState.length - 1 ? true : false}
-            >
-              <h4 className="title">{item.day}</h4>
-              {item.meals.map((meal, mealIndex) => {
-                return (
-                  <Cell
-                    key={mealIndex}
-                    meal={meal}
-                    mealIndex={mealIndex}
-                    dayIndex={index}
-                  />
-                )
-              })}
-            </DayWrapper>
-          )
-        })}
+
+        <Calendar />
+
       </WeekWrapper>
       <IngredientsWrapper>
         <Ingredients>
@@ -108,36 +89,9 @@ const Week = () => {
             </IconButton>
           </ButtonsWrapper>
         </Ingredients>
-        {weekState.map((item, index) => {
-          return (
-            <Ingredients key={item.day}>
-              {item.meals.map((meal, mealIndex) => {
-                if (!meal) return null
-                return (
-                  <div key={meal.title ? meal.title + mealIndex : meal.title}>
-                    <h4>{meal.title}</h4>
-                    {meal.ingredients?.map((ingredient) => {
-                      return (
-                        <Ingredient key={ingredient.name + mealIndex}>
-                          <Checkbox
-                            checked={ingredient.checked}
-                            dayIndex={index}
-                            mealIndex={mealIndex}
-                            ingredientName={ingredient.name}
-                          />
-                          <span className="name">{ingredient.name}</span>
-                          <span className="quantity">
-                            {ingredient.quantity} {ingredient.unit}
-                          </span>
-                        </Ingredient>
-                      )
-                    })}
-                  </div>
-                )
-              })}
-            </Ingredients>
-          )
-        })}
+
+        <IngredientsList />
+
       </IngredientsWrapper>
       <TotalIngredients
         isTotalOpen={isTotalOpen}
