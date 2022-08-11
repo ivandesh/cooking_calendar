@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState} from 'react'
 import {
   WeekWrapper,
   DayWrapper,
@@ -10,8 +10,7 @@ import {
 } from './index.styles'
 import { useAppSelector, useAppDispatch } from 'redux/hooks'
 import Cell from './components/cell'
-import { Checkbox } from '@mui/material'
-import { toggleIngredient, reset, randomize } from 'features/recipe/cookingSlice'
+import { reset, randomize } from 'features/recipe/cookingSlice'
 import TotalIngredients from './components/total'
 import IconButton from '@mui/material/IconButton'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
@@ -23,7 +22,8 @@ import DarkModeIcon from '@mui/icons-material/DarkMode'
 import CircleIcon from '@mui/icons-material/Circle'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import LocalDiningIcon from '@mui/icons-material/LocalDining'
-import CasinoIcon from '@mui/icons-material/Casino'
+import CasinoIcon from '@mui/icons-material/Casino';
+import Checkbox from './components/checkbox';
 
 const Week = () => {
   const weekState = useAppSelector((state) => state.app)
@@ -121,16 +121,9 @@ const Week = () => {
                         <Ingredient key={ingredient.name + mealIndex}>
                           <Checkbox
                             checked={ingredient.checked}
-                            onChange={(e) =>
-                              dispatch(
-                                toggleIngredient({
-                                  dayIndex: index,
-                                  mealIndex,
-                                  ingredientName: ingredient.name,
-                                  checked: e.target.checked,
-                                })
-                              )
-                            }
+                            dayIndex={index}
+                            mealIndex={mealIndex}
+                            ingredientName={ingredient.name}
                           />
                           <span className="name">{ingredient.name}</span>
                           <span className="quantity">
