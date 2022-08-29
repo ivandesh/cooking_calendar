@@ -90,6 +90,9 @@ export const Ingredients = styled.div`
   flex-direction: column;
   padding: 0 10px;
   h4 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin: 12px 0;
     font-size: 20px;
     color: #58998e;
@@ -123,11 +126,16 @@ export const Ingredient = styled.div`
 export const ButtonsWrapper = styled.div`
   position: sticky;
   top: 10px;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 65px 65px 65px;
+  display: flex;
+  flex-direction: column;
   grid-gap: 10px;
   margin-top: 10px;
+
+  > button {
+    flex-shrink: 0;
+    height: 70px;
+    width: 70px;
+  }
 
   .MuiSvgIcon-root {
     color: #58998e;
@@ -204,6 +212,7 @@ export const DialogWrapper = styled.div`
     font-family: 'Alba Super';
     z-index: 1;
     color: #3d6d65;
+    user-select: none;
   }
 
   .buttons {
@@ -227,3 +236,14 @@ export const DialogWrapper = styled.div`
     }
   }
 `
+export const EmptyList = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  svg {
+    font-size: 50px; 
+  }
+`;

@@ -1,6 +1,7 @@
 import Drawer from '@mui/material/Drawer'
-import { TotalWrapper } from '../index.styles'
-import { useAppSelector } from 'redux/hooks'
+import { TotalWrapper, EmptyList } from '../index.styles'
+import { useAppSelector } from 'redux/hooks';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 function unique(arr: any, keyProps: string[]) {
   const kvArray = arr.map((entry: any) => {
@@ -67,7 +68,14 @@ const TotalIngredients = ({
     >
       <TotalWrapper>
         <h3 className="title">Shopping List</h3>
+        
         <div className="list">
+          {!uniqueIngredients.length && (
+            <EmptyList>
+              <AddShoppingCartIcon />
+              Поки що пусто, додай якихось страв
+            </EmptyList>
+          )}
           {uniqueIngredients.map((item: any, index: number) => {
             return (
               <div className="ingredient" key={index}>

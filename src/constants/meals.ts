@@ -1,6 +1,6 @@
 export type TMeal = {
-  title?: string;
-  ingredients?: {
+  title: string;
+  ingredients: {
     name: string;
     quantity?: number;
     unit?: 'гр' | 'мл' | 'шт' | 'ст л' | 'ст' | 'ч л' | 'л';

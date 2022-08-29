@@ -5,8 +5,8 @@ import { breakfastMeals, proteinMeals, garnishList, combinedMealsList, snackMeal
 export type CookingState = {
   day: string;
   meals: {
-    title?: string;
-    ingredients?: {
+    title: string;
+    ingredients: {
       name: string;
       quantity?: string;
       unit?: string;
@@ -38,6 +38,9 @@ const cookingSlice = createSlice({
     },
     reset: (state: CookingState, payload: any) => {
       return initialState
+    },
+    uncheckAll: (state: CookingState, action: PayloadAction<{dayIndex: number, mealIndex: number}>) => {
+      state[action.payload.dayIndex].meals[action.payload.mealIndex].ingredients.map(ing => ing.checked = false)
     },
     //@ts-ignore
     randomize: (state: CookingState, payload: any) => {
@@ -108,6 +111,6 @@ const cookingSlice = createSlice({
   }
 })
 
-export const {addMeal, toggleIngredient, reset, randomize} = cookingSlice.actions;
+export const {addMeal, toggleIngredient, reset, randomize, uncheckAll} = cookingSlice.actions;
 
 export default cookingSlice.reducer

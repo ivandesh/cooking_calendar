@@ -1,10 +1,14 @@
 import React from 'react'
-import { useAppSelector } from 'redux/hooks'
+import { useAppSelector, useAppDispatch } from 'redux/hooks'
+import { uncheckAll } from 'features/recipe/cookingSlice'
 import { Ingredients } from './index.styles'
 import IngredientCheckbox from './components/ingredient-checkbox'
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline'
+import { IconButton } from '@mui/material'
 
 const IngredientsList = () => {
   const weekState = useAppSelector((state) => state.app)
+  const dispatch = useAppDispatch()
 
   return (
     <>
@@ -15,7 +19,17 @@ const IngredientsList = () => {
               if (!meal) return null
               return (
                 <div key={meal.title ? meal.title + mealIndex : meal.title}>
-                  <h4>{meal.title}</h4>
+                  <h4>
+                    {meal.title}
+                    <IconButton
+                      size="small"
+                      onClick={() =>
+                        dispatch(uncheckAll({ dayIndex: index, mealIndex }))
+                      }
+                    >
+                      <RemoveCircleOutlineIcon />
+                    </IconButton>
+                  </h4>
                   {meal.ingredients?.map((ingredient) => {
                     return (
                       <IngredientCheckbox
